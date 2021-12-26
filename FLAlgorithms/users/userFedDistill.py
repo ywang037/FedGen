@@ -67,7 +67,7 @@ class UserFedDistill(User):
                 if count_labels:
                     self.update_label_counts(result['labels'], result['counts'])
                 self.optimizer.zero_grad()
-                result=self.model(X, logit=True)
+                result=self.model(X, logit=True) # WY: watch out this line, logit=True
                 output, logit = result['output'], result['logit']
                 self.logit_tracker.update(logit, y)
                 if self.global_logits != None:
